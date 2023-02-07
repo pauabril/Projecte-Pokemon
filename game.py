@@ -55,21 +55,6 @@ class Game:
 				
             # ─── Handle Key Events ────────────────────────────────
 			elif event.type == pygame.KEYDOWN:
-				# if event.key == pygame.K_ESCAPE:
-				# 	self.game_state = GameState.ENDED
-
-				# elif event.key == pygame.K_w or event.key == pygame.K_UP: # up
-				# 	self.move_unit(self.player, [0, -1], "up")
-				# elif event.key == pygame.K_s or event.key == pygame.K_DOWN: # down
-				# 	self.move_unit(self.player, [0, 1], "down")
-				# elif event.key == pygame.K_a or event.key == pygame.K_LEFT: # left
-				# 	self.move_unit(self.player, [-1, 0], "left")
-				# elif event.key == pygame.K_d or event.key == pygame.K_RIGHT: # right
-				# 	self.move_unit(self.player, [1, 0], "right")
-
-				# elif event.key == pygame.K_e: # interact TODO: mouse button
-				# 	self.interact()
-
 				match event.key:
 					case pygame.K_ESCAPE:
 						self.game_state = GameState.ENDED
