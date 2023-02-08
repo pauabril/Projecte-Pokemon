@@ -19,7 +19,7 @@ class Game:
 		self.player = player
 		self.objects.append(player)
 
-		self.load_map(MAP)
+		self.load_map()
 
 		npc1 = Npc(3, 3, name="npc1", snum="000") #TODO: make npcs talk and be linked to the map
 		npc2 = Npc(4, 6, name="npc2", snum="003", direction="left")
@@ -72,7 +72,7 @@ class Game:
 						pass
 					
 		
-	def load_map(self, map_name):
+	def load_map(self): # TODO: change maps to csv
 		with open(MAP_FILE) as map_file:
 			for line in map_file:
 				map_line = []
@@ -80,7 +80,7 @@ class Game:
 					map_line.append(line[i])
 				self.map.append(map_line)
 		
-		self.load_map_objects(map_name)			
+		self.load_map_objects()			
 
 	def render_map(self, screen):
 		self.determine_cam()
@@ -98,7 +98,7 @@ class Game:
 
 		self.render_map_objects(screen)
 
-	def load_map_objects(self, map_name):
+	def load_map_objects(self): # TODO: change maps to csv
 		with open(OBJ_FILE) as map_file:
 			for line in map_file:
 				map_line = []
@@ -107,8 +107,6 @@ class Game:
 				self.map_objects.append(map_line)
 	
 	def render_map_objects(self, screen):
-		self.determine_cam()
-
 		y_pos = 0
 		for line in self.map_objects:
 			x_pos = 0
@@ -226,5 +224,3 @@ map_tile_img = {
 	"B" : pygame.transform.scale(pygame.image.load(TILES["bush"]), (SCALE, SCALE)),
 	"R" : pygame.transform.scale(pygame.image.load(TILES["rock"]), (SCALE, SCALE)),
 }
-					
-					
