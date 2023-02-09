@@ -11,11 +11,12 @@ WHITE = (255, 255, 255)
 
 SCREEN_SIZE = WIDTH, HEIGHT = 640, 480
 
+SCALE = 80
 SCALE = 32
 
 # ─── Other Settings ───────────────────────────────────────────────────────────
 
-LOGO = os.path.join(PATH, "sprites\\treebtm.png")
+LOGO = os.path.join(PATH, "img\\sprites\\treebtm.png")
 
 # ─── Map ──────────────────────────────────────────────────────────────────────
 
@@ -26,7 +27,7 @@ OBJ_FILE = os.path.join(PATH, "maps\\" + MAP + ".obj.txt")
 
 # ─── Sprites ──────────────────────────────────────────────────────────────────
 
-SPATH = os.path.join(PATH, "sprites\\")
+SPATH = os.path.join(PATH, "img\\sprites\\")
 
 MAP_TILE_NAME = {
 	"air": ".",
@@ -77,4 +78,13 @@ PLAYER_SPRITE = {
 	"003down": SPATH + "h003_s.png",
 	"003left": SPATH + "h003_w.png",
 	"003right": SPATH + "h003_e.png",
+}
+
+# ─── Images ───────────────────────────────────────────────────────────────────
+
+BG_PATH = os.path.join(PATH, "img\\backgrounds\\")
+
+BG = {
+	"start": BG_PATH + "cover.png",
+	"start text": BG_PATH + "cover_text-blink.png",
 }

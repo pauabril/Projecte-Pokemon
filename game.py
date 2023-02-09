@@ -5,6 +5,8 @@ from game_state import GameState
 from config import *
 import random
 
+import time # NOTE: only for testing start screen
+
 class Game:
 	def __init__(self, screen):
 		self.screen = screen
@@ -15,6 +17,9 @@ class Game:
 		self.cam = [0, 0]
 
 	def setup(self):
+		self.screen.blit(pygame.image.load(BG["start"]).convert(), (0,0))
+		pygame.display.update()
+
 		player = Player(1,1, snum="001")
 		self.player = player
 		self.objects.append(player)
@@ -35,6 +40,9 @@ class Game:
 
 		self.game_state = GameState.RUNNING
 		print("Setup")
+
+		time.sleep(1) # REMOVE
+					
 
 	def update(self):
 		self.screen.fill(BLACK)
@@ -152,8 +160,8 @@ class Game:
 
 	
 	def determine_cam(self):
-		max_y_pos = len(self.map) - SCREEN_SIZE[1] / SCALE
-		y_pos = self.player.pos[1] - SCREEN_SIZE[1] / SCALE / 2
+		max_y_pos = len(self.map) - int(SCREEN_SIZE[1] / SCALE)
+		y_pos = self.player.pos[1] - int(SCREEN_SIZE[1] / SCALE / 2)
 
 		if y_pos <= max_y_pos and y_pos >= 0:
 			self.cam[1] = y_pos
@@ -162,8 +170,8 @@ class Game:
 		else:
 			self.cam[1] = max_y_pos
 
-		max_x_pos = len(self.map[0]) - SCREEN_SIZE[0] / SCALE
-		x_pos = self.player.pos[0] - SCREEN_SIZE[0] / SCALE / 2
+		max_x_pos = len(self.map[0]) - int(SCREEN_SIZE[0] / SCALE)
+		x_pos = self.player.pos[0] - int(SCREEN_SIZE[0] / SCALE / 2)
 
 		if x_pos <= max_x_pos and x_pos >= 0:
 			self.cam[0] = x_pos
