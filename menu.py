@@ -3,7 +3,7 @@ import config
 import random
 
 from player import Player
-from game_state import GameState
+from game_state import GlobalGameState
 
 import time # NOTE: only for testing start screen
 
@@ -23,13 +23,13 @@ class Menu:
 	def handle_events(self):
 		for event in pygame.event.get():
 			if event.type == pygame.QUIT:
-				self.game.game_state = GameState.ENDED
+				self.game.game_state = GlobalGameState.ENDED
 
 			# ─── Handle Key Events ────────────────────────────────
 			elif event.type == pygame.KEYDOWN:
 				match event.key:
 					case pygame.K_ESCAPE:
-						self.game.game_state = GameState.ENDED
+						self.game.game_state = GlobalGameState.ENDED
 					case pygame.K_RETURN:
 						self.game.setup()
-						self.game.game_state = GameState.RUNNING
+						self.game.game_state = GlobalGameState.RUNNING

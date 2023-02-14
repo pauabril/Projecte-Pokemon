@@ -1,7 +1,7 @@
 import pygame
 from pygame.locals import *
 import sys
-from game_state import GameState
+from game_state import GlobalGameState
 
 from config import *
 
@@ -23,13 +23,13 @@ game = Game(screen)
 menu = Menu(screen, game)
 menu.setup()
 
-while game.game_state != GameState.ENDED:
+while game.global_gamestate != GlobalGameState.ENDED:
 	clock.tick(60)
 
-	match game.game_state:
-		case GameState.NONE:
+	match game.global_gamestate:
+		case GlobalGameState.NONE:
 			menu.update()
-		case GameState.RUNNING:
+		case GlobalGameState.RUNNING:
 			game.update()
 
 	pygame.display.update()
