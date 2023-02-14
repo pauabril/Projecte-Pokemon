@@ -4,6 +4,7 @@ from config import *
 class Npc:
 	def __init__(self, pos_x, pos_y, name, snum="001", direction="down"):
 		self.name = name
+		self.snum = snum
 		self.pos = (pos_x, pos_y)
 		self.sprite = pygame.image.load(PLAYER_SPRITE[snum + direction])
 		self.sprite = pygame.transform.scale(self.sprite, (SCALE, SCALE))

@@ -20,7 +20,7 @@ class Game:
 		self.screen.blit(pygame.image.load(BG["start"]).convert(), (0,0))
 		pygame.display.update()
 
-		player = Player(1,1, snum="001")
+		player = Player(1,1, snum="001") # TODO: move snum to user input
 		self.player = player
 		self.objects.append(player)
 
@@ -60,8 +60,8 @@ class Game:
 		for event in pygame.event.get():
 			if event.type == pygame.QUIT:
 				self.game_state = GameState.ENDED
-				
-            # ─── Handle Key Events ────────────────────────────────
+
+			# ─── Handle Key Events ────────────────────────────────
 			elif event.type == pygame.KEYDOWN:
 				match event.key:
 					case pygame.K_ESCAPE:
@@ -74,12 +74,12 @@ class Game:
 						self.move_unit(self.player, [-1, 0], "left")
 					case pygame.K_d | pygame.K_RIGHT: # right
 						self.move_unit(self.player, [1, 0], "right")
-					case pygame.K_e: # interact TODO: mouse button
+					case pygame.K_e: # interact
 						self.interact()
 					case _:
 						pass
-					
-		
+
+
 	def load_map(self): # TODO: change maps to csv
 		with open(MAP_FILE) as map_file:
 			for line in map_file:
@@ -87,7 +87,7 @@ class Game:
 				for i in range(0, len(line) - 1, 2):
 					map_line.append(line[i])
 				self.map.append(map_line)
-		
+
 		self.load_map_objects()			
 
 	def render_map(self, screen):
@@ -113,7 +113,7 @@ class Game:
 				for i in range(0, len(line) - 1, 2):
 					map_line.append(line[i])
 				self.map_objects.append(map_line)
-	
+
 	def render_map_objects(self, screen):
 		y_pos = 0
 		for line in self.map_objects:
@@ -125,8 +125,8 @@ class Game:
 
 				x_pos += 1
 			y_pos += 1
-	
-	
+
+
 	def move_unit(self, unit, pos_change, direction):
 		new_pos = [unit.pos[0] + pos_change[0], unit.pos[1] + pos_change[1]]
 
@@ -158,7 +158,7 @@ class Game:
 			if random.randint(0, 100) <= 20:
 				print("Pokemon")
 
-	
+
 	def determine_cam(self):
 		max_y_pos = len(self.map) - int(SCREEN_SIZE[1] / SCALE)
 		y_pos = self.player.pos[1] - int(SCREEN_SIZE[1] / SCALE / 2)
@@ -181,7 +181,7 @@ class Game:
 			self.cam[0] = max_x_pos
 
 
-	def interact(self):		
+	def interact(self):
 		if self.player.direction == "up":
 			if self.player.pos[1] - 1 < 0: # out of bounds
 				print("can't interact (out of bounds)")
@@ -215,8 +215,6 @@ class Game:
 		print("interact")
 
 
-
-
 map_tile_img = {
 	"T" : pygame.transform.scale(pygame.image.load(TILES["tallgrass"]), (SCALE, SCALE)),
 	"." : pygame.transform.scale(pygame.image.load(TILES["air"]), (SCALE, SCALE)),
@@ -228,7 +226,7 @@ map_tile_img = {
 	"N" : pygame.transform.scale(pygame.image.load(TILES["treetop"]), (SCALE, SCALE)),
 	"J" : pygame.transform.scale(pygame.image.load(TILES["treedbl"]), (SCALE, SCALE)),
 	"Z" : pygame.transform.scale(pygame.image.load(TILES["sign"]), (SCALE, SCALE)),
-	"P" : pygame.transform.scale(pygame.image.load(TILES["pokeball"]), (SCALE, SCALE)),
+	"P" : pygame.transform.scale(pygame.image.load(TILES["item"]), (SCALE, SCALE)),
 	"B" : pygame.transform.scale(pygame.image.load(TILES["bush"]), (SCALE, SCALE)),
 	"R" : pygame.transform.scale(pygame.image.load(TILES["rock"]), (SCALE, SCALE)),
 }

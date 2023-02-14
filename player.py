@@ -2,13 +2,14 @@ import pygame
 from config import *
 
 class Player:
-	def __init__(self, pos_x, pos_y, snum="000"):
+	def __init__(self, pos_x, pos_y, snum="000", name="Player"):
 		self.pos = (pos_x, pos_y)
 		self.snum = snum
 		self.sprite = pygame.image.load(PLAYER_SPRITE[snum + "down"])
 		self.sprite = pygame.transform.scale(self.sprite, (SCALE, SCALE))
 		self.rect = pygame.Rect(self.pos[0] * SCALE, self.pos[1] * SCALE, SCALE, SCALE)
 		self.direction = "down"
+		self.name = name
 		print("Player created")
 
 	def update(self):

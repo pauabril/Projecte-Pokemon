@@ -20,7 +20,7 @@ LOGO = os.path.join(PATH, "img\\sprites\\treebtm.png")
 
 # ─── Map ──────────────────────────────────────────────────────────────────────
 
-MAP = "05"
+MAP = "t01"
 
 MAP_FILE = os.path.join(PATH, "maps\\" + MAP + ".txt")
 OBJ_FILE = os.path.join(PATH, "maps\\" + MAP + ".obj.txt")
@@ -56,7 +56,7 @@ TILES = {
 	"treebtm": SPATH + "treebtm.png",
 	"treedbl": SPATH + "treedbl.png",
 	"sign": SPATH + "sign.png",
-	"pokeball": SPATH + "shroom.png",
+	"item": SPATH + "worlditem.png",
 	"bush": SPATH + "bush.png",
 	"rock": SPATH + "rock.png",
 }
