@@ -152,11 +152,17 @@ class Game:
 				return
 		
 		unit.update_pos(new_pos, direction)
+		self.find_pokemon(unit, new_pos)
 
-		if self.map_objects[unit.pos[1]][unit.pos[0]] == "T":
-			print("Tall grass") #TODO: add random encounter and only work if player is moves
-			if random.randint(0, 100) <= 20:
-				print("Pokemon")
+		
+	def find_pokemon(self, player, new_pos):
+		# print([player.pos[0], player.pos[1]], " | ", new_pos)
+		if [player.pos[0], player.pos[1]] == new_pos:
+			if self.map_objects[player.pos[1]][player.pos[0]] == "T":
+				print("Tall grass")
+				if random.randint(0, 100) <= 20:
+					print("Pokemon")
+		
 
 
 	def determine_cam(self):
