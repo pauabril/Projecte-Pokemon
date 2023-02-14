@@ -6,6 +6,7 @@ from game_state import GameState
 from config import *
 
 from game import Game
+from menu import Menu
 
 pygame.init()
 
@@ -17,9 +18,18 @@ pygame.display.set_icon(pygame.image.load(LOGO))
 clock = pygame.time.Clock()
 
 game = Game(screen)
-game.setup()
+# game.setup()
 
-while game.game_state == GameState.RUNNING:
+menu = Menu(screen, game)
+menu.setup()
+
+while game.game_state != GameState.ENDED:
 	clock.tick(60)
-	game.update()
+
+	match game.game_state:
+		case GameState.NONE:
+			menu.update()
+		case GameState.RUNNING:
+			game.update()
+
 	pygame.display.update()

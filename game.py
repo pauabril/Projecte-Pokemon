@@ -17,8 +17,8 @@ class Game:
 		self.cam = [0, 0]
 
 	def setup(self):
-		self.screen.blit(pygame.image.load(BG["start"]).convert(), (0,0))
-		pygame.display.update()
+		# self.screen.blit(pygame.image.load(BG["start"]).convert(), (0,0))
+		# pygame.display.update()
 
 		player = Player(1,1, snum="001") # TODO: move snum to user input
 		self.player = player
@@ -41,7 +41,7 @@ class Game:
 		self.game_state = GameState.RUNNING
 		print("Setup")
 
-		time.sleep(1) # REMOVE
+		# time.sleep(1) # REMOVE
 					
 
 	def update(self):
@@ -65,7 +65,7 @@ class Game:
 			elif event.type == pygame.KEYDOWN:
 				match event.key:
 					case pygame.K_ESCAPE:
-						self.game_state = GameState.ENDED
+						self.game_state = GameState.NONE
 					case pygame.K_w | pygame.K_UP: # up
 						self.move_unit(self.player, [0, -1], "up")
 					case pygame.K_s | pygame.K_DOWN: # down
@@ -154,7 +154,6 @@ class Game:
 		unit.update_pos(new_pos, direction)
 		self.find_pokemon(unit, new_pos)
 
-		
 	def find_pokemon(self, player, new_pos):
 		# print([player.pos[0], player.pos[1]], " | ", new_pos)
 		if [player.pos[0], player.pos[1]] == new_pos:
@@ -162,7 +161,6 @@ class Game:
 				print("Tall grass")
 				if random.randint(0, 100) <= 20:
 					print("Pokemon")
-		
 
 
 	def determine_cam(self):

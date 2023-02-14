@@ -20,7 +20,7 @@ LOGO = os.path.join(PATH, "img\\sprites\\treebtm.png")
 
 # ─── Map ──────────────────────────────────────────────────────────────────────
 
-MAP = "t01"
+MAP = "05"
 
 MAP_FILE = os.path.join(PATH, "maps\\" + MAP + ".txt")
 OBJ_FILE = os.path.join(PATH, "maps\\" + MAP + ".obj.txt")
