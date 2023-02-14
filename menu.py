@@ -23,13 +23,13 @@ class Menu:
 	def handle_events(self):
 		for event in pygame.event.get():
 			if event.type == pygame.QUIT:
-				self.game.game_state = GlobalGameState.ENDED
+				self.game.global_gamestate = GlobalGameState.ENDED
 
 			# ─── Handle Key Events ────────────────────────────────
 			elif event.type == pygame.KEYDOWN:
 				match event.key:
 					case pygame.K_ESCAPE:
-						self.game.game_state = GlobalGameState.ENDED
+						self.game.global_gamestate = GlobalGameState.ENDED
 					case pygame.K_RETURN:
 						self.game.setup()
-						self.game.game_state = GlobalGameState.RUNNING
+						self.game.global_gamestate = GlobalGameState.RUNNING
