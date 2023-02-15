@@ -63,7 +63,7 @@ class Game:
 			elif event.type == pygame.KEYDOWN:
 				match event.key:
 					case pygame.K_ESCAPE | pygame.K_TAB: # menu
-						self.global_gamestate = GlobalGameState.NONE
+						self.global_gamestate = GlobalGameState.PAUSED
 					case pygame.K_w | pygame.K_UP: # up
 						self.move_unit(self.player, [0, -1], "up")
 					case pygame.K_s | pygame.K_DOWN: # down

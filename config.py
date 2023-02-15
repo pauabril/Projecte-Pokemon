@@ -86,5 +86,5 @@ BG_PATH = os.path.join(PATH, "img\\backgrounds\\")
 
 BG = {
 	"start": BG_PATH + "cover.png",
-	"start text": BG_PATH + "cover_text-blink.png",
+	"start text": BG_PATH + "cover_text.png",
 }

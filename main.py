@@ -6,7 +6,8 @@ from game_state import GlobalGameState
 from config import *
 
 from game import Game
-from menu import Menu
+from start_menu import StartMenu
+from pause import PauseMenu
 
 pygame.init()
 
@@ -20,7 +21,10 @@ clock = pygame.time.Clock()
 game = Game(screen)
 # game.setup()
 
-menu = Menu(screen, game)
+start = StartMenu(screen, game)
+start.setup()
+
+menu = PauseMenu(screen, game)
 menu.setup()
 
 while game.global_gamestate != GlobalGameState.ENDED:
@@ -28,6 +32,8 @@ while game.global_gamestate != GlobalGameState.ENDED:
 
 	match game.global_gamestate:
 		case GlobalGameState.NONE:
+			start.update()
+		case GlobalGameState.PAUSED:
 			menu.update()
 		case GlobalGameState.RUNNING:
 			game.update()

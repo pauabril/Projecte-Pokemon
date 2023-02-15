@@ -7,13 +7,13 @@ from game_state import GlobalGameState
 
 import time # NOTE: only for testing start screen
 
-class Menu:
+class StartMenu:
 	def __init__(self, screen, game):
 		self.screen = screen
 		self.game = game # TODO: Better way to do this
 
 	def setup(self):
-		self.menu_img = pygame.image.load(config.BG["start"])
+		self.menu_img = pygame.image.load(config.BG["start text"])
 
 	def update(self):
 		self.screen.fill(config.BLACK)
