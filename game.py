@@ -7,8 +7,6 @@ from game_state import GlobalGameState, RunningGameState
 from config import *
 from game_view.map import Map
 
-import time # NOTE: only for testing start screen
-
 class Game:
 	def __init__(self, screen):
 		self.screen = screen

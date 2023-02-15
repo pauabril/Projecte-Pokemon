@@ -5,8 +5,6 @@ import random
 from player import Player
 from game_state import GlobalGameState
 
-import time # NOTE: only for testing start screen
-
 class PauseMenu:
 	def __init__(self, screen, game):
 		self.screen = screen
