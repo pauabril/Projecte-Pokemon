@@ -12,6 +12,7 @@ class StartMenu:
 
 	def setup(self):
 		self.menu_img = pygame.image.load(config.BG["start text"])
+		self.menu_img = pygame.transform.scale(self.menu_img, config.SCREEN_SIZE)
 
 	def update(self):
 		self.screen.fill(config.BLACK)

@@ -5,7 +5,9 @@ from player import Player
 from npc import Npc
 from game_state import GlobalGameState, RunningGameState
 from config import *
+
 from game_view.map import Map
+from game_view.battle import Battle
 
 class Game:
 	def __init__(self, screen):
@@ -14,6 +16,7 @@ class Game:
 		self.global_gamestate = GlobalGameState.NONE
 		self.running_gamestate = RunningGameState.MAP
 		self.map = Map(screen)
+		self.battle = None
 
 	def setup(self):
 		player = Player(1,1, snum="001") # TODO: move snum to user input
@@ -48,7 +51,8 @@ class Game:
 				self.map.render(self.screen, self.player, self.objects)
 			
 			case RunningGameState.BATTLE:
-				pass
+				self.battle.update()
+				self.battle.render()
 
 		# print("Update")
 
@@ -60,7 +64,9 @@ class Game:
 			# ─── Handle Key Events ────────────────────────────────
 			elif event.type == pygame.KEYDOWN:
 				match event.key:
-					case pygame.K_ESCAPE | pygame.K_TAB: # menu
+					case pygame.K_ESCAPE: # quit
+						self.global_gamestate = GlobalGameState.ENDED
+					case pygame.K_q | pygame.K_TAB: # menu
 						self.global_gamestate = GlobalGameState.PAUSED
 					case pygame.K_w | pygame.K_UP: # up
 						self.move_unit(self.player, [0, -1], "up")
@@ -70,7 +76,7 @@ class Game:
 						self.move_unit(self.player, [-1, 0], "left")
 					case pygame.K_d | pygame.K_RIGHT: # right
 						self.move_unit(self.player, [1, 0], "right")
-					case pygame.K_e: # interact
+					case pygame.K_e | pygame.K_RETURN: # interact
 						self.interact()
 					case _:
 						pass
@@ -110,6 +116,8 @@ class Game:
 				print("Tall grass")
 				if random.randint(0, 100) <= 20:
 					print("Pokemon")
+					self.battle = Battle(self.screen, "pokemon", self.player)
+					self.running_gamestate = RunningGameState.BATTLE
 
 	def interact(self):
 		if self.player.direction == "up":
